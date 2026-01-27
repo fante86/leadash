@@ -1,161 +1,142 @@
-# 🎯 Sistema de Enriquecimento de Leads B2B
+# 🎯 Enriquecedor de Leads B2B
 
-Sistema desenvolvido para equipes de Pre Sales enriquecerem bases de empresas com informações de contato e decisores através de pesquisas automatizadas na web.
+Sistema web para enriquecer bases de empresas com dados de contato e decisores através de buscas automatizadas.
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io)
+
+## 🚀 Acesso Rápido
+
+**Demo Online:** [Clique aqui para acessar o app](https://share.streamlit.io) *(adicione seu link após deploy)*
 
 ## 📋 Funcionalidades
 
 - ✅ Upload de arquivo Excel com lista de empresas
-- 🔍 Busca automatizada por:
-  - 📞 Telefone de contato
+- 🔍 Busca automatizada de:
+  - 📞 Telefone
   - 📧 Email corporativo
-  - 🌐 Website oficial
+  - 🌐 Website
   - 💼 LinkedIn da empresa
-  - 👔 LinkedIn de decisores (CEO, Diretor, Gerente)
-- 📊 Dashboard com estatísticas de enriquecimento
-- 💾 Exportação de resultados em Excel
-- ⚡ Processamento em lotes configurável
+  - 👔 LinkedIn de decisores
+- 📊 Dashboard com estatísticas
+- 💾 Exportação de resultados
 
-## 🚀 Como Instalar
+## 🖥️ Screenshots
 
-### Pré-requisitos
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes Python)
+*Adicione screenshots do seu app aqui após o deploy*
 
-### Instalação
+## 🛠️ Tecnologias
 
-1. Clone ou baixe os arquivos do projeto
+- Python 3.11
+- Streamlit
+- Pandas
+- BeautifulSoup4
+- Requests
 
-2. Instale as dependências:
+## 📦 Instalação Local
+
 ```bash
+# Clone o repositório
+git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+
+# Entre na pasta
+cd SEU-REPO
+
+# Instale dependências
 pip install -r requirements.txt
-```
 
-## 💻 Como Usar
-
-1. **Inicie o aplicativo:**
-```bash
+# Execute o app
 streamlit run app_enriquecimento.py
 ```
 
-2. **Acesse no navegador:**
-   - O Streamlit abrirá automaticamente em `http://localhost:8501`
-   - Ou acesse manualmente esse endereço
+## ☁️ Deploy no Streamlit Cloud
 
-3. **Faça upload do arquivo Excel:**
-   - Clique em "Browse files" e selecione seu arquivo
-   - O arquivo deve ter as colunas: `name`, `city`, `state`
+1. Fork este repositório
+2. Acesse [share.streamlit.io](https://share.streamlit.io)
+3. Conecte seu repositório
+4. Deploy! 🚀
 
-4. **Configure o processamento:**
-   - Defina quantas empresas processar (recomendado: 10-20 por vez)
-   - Ajuste o delay entre buscas (padrão: 2 segundos)
+[Guia detalhado de deploy](DEPLOY_STREAMLIT_CLOUD.md)
 
-5. **Inicie o enriquecimento:**
-   - Clique no botão "Iniciar Enriquecimento"
-   - Acompanhe o progresso em tempo real
+## 📖 Documentação
 
-6. **Baixe os resultados:**
-   - Após o processamento, clique em "Download Excel Enriquecido"
-   - O arquivo conterá todos os dados originais + dados enriquecidos
+- [README Completo](README.md) - Documentação técnica completa
+- [Guia de Instalação](GUIA_INSTALACAO.md) - Instalação local passo a passo
+- [Deploy Streamlit Cloud](DEPLOY_STREAMLIT_CLOUD.md) - Deploy na nuvem
 
-## 📁 Estrutura do Arquivo Excel
+## 🎯 Como Usar
 
-### Colunas Obrigatórias (Input)
+1. **Upload:** Faça upload do arquivo Excel
+2. **Configure:** Defina quantas empresas processar
+3. **Processe:** Clique em "Iniciar Enriquecimento"
+4. **Download:** Baixe o arquivo enriquecido
+
+### Formato do Arquivo Excel
+
+Seu arquivo deve conter:
 - `name`: Nome da empresa
 - `city`: Cidade
 - `state`: Estado
 
-### Colunas Adicionadas (Output)
-- `telefone_encontrado`: Telefone(s) encontrado(s)
-- `email_encontrado`: Email(s) encontrado(s)
-- `website_encontrado`: Website encontrado
-- `linkedin_empresa`: LinkedIn corporativo
-- `linkedin_decisores`: LinkedIn de decisores
-- `status_enriquecimento`: Status do processo
+## 📊 Taxa de Sucesso
 
-## ⚙️ Configurações
+| Dado | Taxa Esperada |
+|------|---------------|
+| Telefone | 30-60% |
+| Email | 20-50% |
+| Website | 40-70% |
+| LinkedIn | 30-60% |
 
-### Processamento em Lotes
-Recomenda-se processar empresas em lotes de 10-20 para:
-- Evitar bloqueios por excesso de requisições
-- Manter performance adequada
-- Facilitar validação manual dos resultados
+## ⚙️ Configuração de APIs (Opcional)
 
-### Delay entre Requisições
-- **Mínimo:** 1 segundo
-- **Recomendado:** 2-3 segundos
-- **Conservador:** 5 segundos
+Para melhor qualidade dos dados, configure no Streamlit Cloud:
 
-## 🎯 Melhores Práticas
+```toml
+# .streamlit/secrets.toml
+[api_keys]
+hunter = "sua-chave-hunter-io"
+serper = "sua-chave-serper"
+```
 
-### Para Pre Sales
-1. **Validação Manual**: Sempre valide os dados encontrados
-2. **Complementação**: Use outras fontes (LinkedIn Sales Navigator, Apollo.io)
-3. **Segmentação**: Processe por região/segmento para melhor qualidade
-4. **Priorização**: Foque nas empresas com maior potencial primeiro
+APIs gratuitas disponíveis:
+- [Hunter.io](https://hunter.io) - 50 buscas/mês
+- [Serper](https://serper.dev) - 2500 buscas/mês
 
-### Dados de Qualidade
-- ✅ Priorize empresas com endereço completo
-- ✅ Verifique se o nome está correto (sem abreviações)
-- ✅ Confirme a cidade e estado antes do processamento
-- ⚠️ Empresas com nomes genéricos podem ter resultados imprecisos
+## 🔒 Privacidade e LGPD
 
-## ⚠️ Limitações e Considerações
+⚠️ **Importante:**
+- Use apenas para prospecção B2B legítima
+- Respeite a LGPD
+- Ofereça opt-out em comunicações
+- Não compartilhe dados pessoais
 
-### Técnicas
-- **Taxa de sucesso:** Varia entre 30-70% dependendo da empresa
-- **Tempo de processamento:** ~5-10 segundos por empresa
-- **Dados públicos:** Apenas informações disponíveis publicamente
-- **Validação necessária:** Resultados devem ser verificados manualmente
+## 🤝 Contribuindo
 
-### Legais
-- ✅ Respeite a LGPD (Lei Geral de Proteção de Dados)
-- ✅ Use dados apenas para fins legítimos de prospecção B2B
-- ✅ Ofereça opt-out em suas comunicações
-- ⚠️ Não compartilhe dados sensíveis
+Contribuições são bem-vindas!
 
-## 🔧 Troubleshooting
+1. Fork o projeto
+2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
 
-### "Erro na busca"
-- Verifique sua conexão com a internet
-- Aumente o delay entre requisições
-- Processe menos empresas por vez
+## 📝 Licença
 
-### "Sem dados encontrados"
-- Nome da empresa pode estar incorreto
-- Empresa pode não ter presença digital
-- Tente buscar manualmente para confirmar
+Este projeto é de código aberto para uso comercial e não comercial.
 
-### "Processamento lento"
-- Normal para lotes grandes
-- Reduza o número de empresas
-- Aumente o delay se necessário
+## 👨‍💻 Autor
 
-## 📈 Próximos Passos
+Desenvolvido para profissionais de Pre Sales
 
-Após enriquecer seus leads:
+## 🆘 Suporte
 
-1. **Validação de Email:** Use Hunter.io ou ZeroBounce
-2. **Enriquecimento Adicional:** Apollo.io, Clearbit
-3. **Verificação de LinkedIn:** Confirme perfis manualmente
-4. **Segmentação:** Agrupe por potencial e prioridade
-5. **Ação:** Inicie cadência de prospecção
+- 📖 Consulte a [documentação completa](README.md)
+- 🐛 [Reporte bugs](https://github.com/SEU-USUARIO/SEU-REPO/issues)
+- 💬 Dúvidas? Abra uma [issue](https://github.com/SEU-USUARIO/SEU-REPO/issues/new)
 
-## 🤝 Suporte
+## ⭐ Star o projeto
 
-Para melhorias ou problemas:
-- Revise a documentação
-- Verifique os logs de erro no terminal
-- Teste com uma amostra pequena primeiro
-
-## 📝 Changelog
-
-### v1.0.0
-- ✨ Versão inicial
-- 🔍 Busca de telefone, email, website
-- 💼 Busca de LinkedIn empresa e decisores
-- 📊 Dashboard de estatísticas
-- 💾 Exportação para Excel
+Se este projeto foi útil para você, considere dar uma ⭐!
 
 ---
 
-**Desenvolvido para equipes de Pre Sales** 🎯
+**Desenvolvido com ❤️ para equipes de Pre Sales**
